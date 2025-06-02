@@ -7,7 +7,7 @@ const listOrder = document.getElementById("listOrder");
 let arr = [],
   arr1 = [];
 
-arr1 = JSON.parse(localStorage.getItem("OrderList"));
+arr1 = JSON.parse(localStorage.getItem("OrderList")) || [];
 RemoveButton.addEventListener("click", (event) => {
   event.preventDefault();
   localStorage.setItem("OrderList", JSON.stringify(arr1));
