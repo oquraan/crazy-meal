@@ -10,6 +10,7 @@ let arr = [],
 arr1 = JSON.parse(localStorage.getItem("OrderList")) || [];
 RemoveButton.addEventListener("click", (event) => {
   event.preventDefault();
+  arr1 = [];
   localStorage.setItem("OrderList", JSON.stringify(arr1));
   renderData();
 });
