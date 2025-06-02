@@ -5,10 +5,11 @@ const RemoveButton = document.getElementById("RemoveButton");
 const listOrder = document.getElementById("listOrder");
 
 let arr = [],
-  arr1 = JSON.parse(localStorage.getItem("OrderList"));
+  arr1 = [];
+
+arr1 = JSON.parse(localStorage.getItem("OrderList"));
 RemoveButton.addEventListener("click", (event) => {
   event.preventDefault();
-  arr1 = [];
   localStorage.setItem("OrderList", JSON.stringify(arr1));
   renderData();
 });
@@ -42,10 +43,13 @@ function renderData() {
 
   // `;
   // listOrder.appendChild(h);
-  JSON.parse(localStorage.getItem("OrderList")).forEach((obj, index) => {
-    const li = document.createElement("tr");
 
-    li.innerHTML = `
+  let data = JSON.parse(localStorage.getItem("OrderList"));
+  if (data && Array.isArray(data)) {
+    data.forEach((obj, index) => {
+      const li = document.createElement("tr");
+
+      li.innerHTML = `
  <td>${obj.mealName}</td>  <td>$ ${obj.mealPrice} </td>
  <td> <img   class="imageCard" src='${obj.mealImag}' ></td>
 
@@ -53,7 +57,8 @@ function renderData() {
  
 `;
 
-    listOrder.appendChild(li);
-  });
+      listOrder.appendChild(li);
+    });
+  }
 }
 renderData();
