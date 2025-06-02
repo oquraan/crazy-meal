@@ -52,8 +52,9 @@ function renderData() {
 
       li.innerHTML = `
  <td>${obj.mealName}</td>  <td>$ ${obj.mealPrice} </td>
- <td> <img   class="imageCard" src='${obj.mealImag}' ></td>
-
+ <td> <img   class="imageCard" src='${
+   obj.mealImag ? obj.mealImag : "../images/pexels-photo-6275177.webp"
+ }' ></td>
 
  
 `;
